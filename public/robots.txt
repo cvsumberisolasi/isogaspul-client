@@ -1,0 +1,9 @@
+﻿# ISOGASPUL RACING — https://isogaspul.com
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /keranjang
+Disallow: /checkout
+Disallow: /dashboard
+
+Sitemap: https://isogaspul.com/sitemap.xml

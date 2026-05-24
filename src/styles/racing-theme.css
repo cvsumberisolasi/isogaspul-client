@@ -1,0 +1,343 @@
+/* ============================================
+   RACING THEME - ISOGASPUL
+   Premium Racing Shop Design System
+   ============================================ */
+
+:root {
+  /* Racing Colors */
+  --racing-red: #E31E24;
+  --racing-red-dark: #B71C1C;
+  --racing-black: #0A0A0A;
+  --racing-yellow: #FFD700;
+  --racing-yellow-dark: #FFA000;
+  --racing-white: #FFFFFF;
+  --racing-silver: #C0C0C0;
+  --racing-carbon: #1A1A1A;
+  --racing-gray: #2A2A2A;
+  --racing-gray-light: #3A3A3A;
+  
+  /* Racing Gradients */
+  --gradient-racing: linear-gradient(135deg, var(--racing-red) 0%, var(--racing-red-dark) 100%);
+  --gradient-carbon: linear-gradient(135deg, var(--racing-carbon) 0%, var(--racing-black) 100%);
+  --gradient-speed: linear-gradient(90deg, transparent 0%, var(--racing-red) 50%, transparent 100%);
+  
+  /* Racing Shadows */
+  --shadow-racing: 0 4px 20px rgba(227, 30, 36, 0.3);
+  --shadow-carbon: 0 8px 32px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 20px rgba(227, 30, 36, 0.5);
+}
+
+/* Racing Animations */
+@keyframes speedLine {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes engineRev {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes checkeredFlag {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+@keyframes racingPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(227, 30, 36, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(227, 30, 36, 0);
+  }
+}
+
+@keyframes tireRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes speedBlur {
+  0% {
+    filter: blur(0px);
+    transform: translateX(0);
+  }
+  50% {
+    filter: blur(2px);
+    transform: translateX(5px);
+  }
+  100% {
+    filter: blur(0px);
+    transform: translateX(0);
+  }
+}
+
+/* Racing Stripe Pattern */
+.racing-stripe {
+  position: relative;
+  overflow: hidden;
+}
+
+.racing-stripe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-speed);
+  animation: speedLine 2s infinite;
+}
+
+/* Checkered Pattern */
+.checkered-pattern {
+  background-image: 
+    linear-gradient(45deg, var(--racing-gray) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--racing-gray) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--racing-gray) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--racing-gray) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Racing Button */
+.btn-racing {
+  position: relative;
+  padding: 14px 32px;
+  background: var(--gradient-racing);
+  color: var(--racing-white);
+  border: 2px solid var(--racing-red);
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-racing);
+}
+
+.btn-racing::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-racing:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+  animation: racingPulse 1.5s infinite;
+}
+
+.btn-racing:hover::before {
+  left: 100%;
+}
+
+.btn-racing:active {
+  transform: translateY(0);
+}
+
+/* Racing Card */
+.racing-card {
+  position: relative;
+  background: var(--gradient-carbon);
+  border: 2px solid var(--racing-gray-light);
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.racing-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-racing);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.racing-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--racing-red);
+  box-shadow: var(--shadow-racing);
+}
+
+.racing-card:hover::before {
+  opacity: 0.1;
+}
+
+/* Speed Lines Effect */
+.speed-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.speed-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--racing-red), transparent);
+  animation: speedLine 1.5s infinite;
+}
+
+.speed-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+.speed-line:nth-child(2) { top: 40%; animation-delay: 0.3s; }
+.speed-line:nth-child(3) { top: 60%; animation-delay: 0.6s; }
+.speed-line:nth-child(4) { top: 80%; animation-delay: 0.9s; }
+
+/* Racing Badge */
+.racing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--racing-carbon);
+  border: 1px solid var(--racing-red);
+  border-radius: 20px;
+  color: var(--racing-white);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.racing-badge::before {
+  content: '🏁';
+  font-size: 16px;
+}
+
+/* Racing Loader */
+.racing-loader {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--racing-gray);
+  border-top-color: var(--racing-red);
+  border-radius: 50%;
+  animation: tireRotate 0.8s linear infinite;
+}
+
+/* Racing Section Header */
+.racing-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.racing-section-header h2 {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--racing-white);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.racing-section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-racing);
+}
+
+.racing-section-header p {
+  font-size: 18px;
+  color: var(--racing-silver);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Racing Stats Counter */
+.racing-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin: 48px 0;
+}
+
+.racing-stat-item {
+  text-align: center;
+  padding: 24px;
+  background: var(--gradient-carbon);
+  border: 2px solid var(--racing-gray-light);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.racing-stat-item:hover {
+  border-color: var(--racing-red);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-racing);
+}
+
+.racing-stat-number {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--racing-red);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.racing-stat-label {
+  font-size: 16px;
+  color: var(--racing-silver);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .racing-section-header h2 {
+    font-size: 32px;
+  }
+  
+  .racing-stat-number {
+    font-size: 36px;
+  }
+  
+  .btn-racing {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
