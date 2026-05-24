@@ -11,7 +11,7 @@ import type {
 
 // Configuration
 const API_BASE_URL = import.meta.env.VITE_INSFORGE_API_URL || 'https://c8kze9fw.ap-southeast.insforge.app';
-const ANON_KEY = import.meta.env.VITE_INSFORGE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OC0xMjM0LTU2NzgtOTBhYi1jZGVmMTIzNDU2NzgiLCJlbWFpbCI6ImFub25AaW5zZm9yZ2UuY29tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1MzQ2MTh9.fL4tIzFRzAYuNdEpfwk5CXuNYb2l7gAxAJKV4k9BNmQ';
+const ANON_KEY = import.meta.env.VITE_INSFORGE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OC0xMjM0LTU2NzgtOTBhYi1jZGVmMTIzNDU2NzgiLCJlbWFpbCI6ImFub25AaW5zZm9yZ2UuY29tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2NTk2MTh9.akZ1zoSDtqaLMVp8ptgcN3KPNwJRoMJ2MPZsDl7khII';
 
 // Auth Token Management
 export function getAuthToken(): string | null {
