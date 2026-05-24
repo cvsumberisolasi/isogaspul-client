@@ -6,8 +6,8 @@
 import type { Product, Order, Blog, Category } from '../types';
 import { getAuthToken } from './insforge';
 
-const API_BASE_URL = import.meta.env.VITE_INSFORGE_API_URL || 'https://c8kze9fw.ap-southeast.insforge.app';
-const ANON_KEY = import.meta.env.VITE_INSFORGE_ADMIN_KEY || 'ik_a2c69f99f1209ba9b4bc9ff9e7ed9762';
+const API_BASE_URL = 'https://c8kze9fw.ap-southeast.insforge.app';
+const ANON_KEY = 'ik_a2c69f99f1209ba9b4bc9ff9e7ed9762';
 
 function getAuthHeader(): string {
   const token = getAuthToken();
